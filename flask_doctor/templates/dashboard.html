@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mainpage</title>
+
+    <script type = "text/javascript" >
+   function preventBack(){window.history.forward();}
+    setTimeout("preventBack()", 0);
+    window.onunload=function(){null};
+</script>
+
+{% extends 'base.html' %}
+{% include 'header.html' %}
+
+
+
+{% block title %} Home {% endblock %}
+
+
+
+
+</head>
+{% block body %}
+<body>
+<div class="well text-center">
+ <h4 class="modal-title">{{msg}}</h4>
+
+Dashboard page...!
+
+<br><br>
+
+ </div>
+<div class="container">
+{% if page== 1 %}
+ <form action="http://localhost:5000/doctor/save/"  method="post">
+     <br><br>
+       <div class="form-row p-3 mb-2 bg-info text-white">
+            <div class="col-md-6 mb-3">
+            <label>Doctor Id:</label>
+            <input type="text" class="form-control" name="drid" value="{{doctor.drid}}"><br><br>
+        </div>
+
+           <div class="col-sm-6 mb-3">
+            <label>Doctor Name:</label>
+            <input type="text" class="form-control" name="name" value="{{doctor.name}}"><br><br>
+        </div>
+
+             <div class="col-sm-6 mb-3">
+                <label>Contact:</label>
+                <input type="text" class="form-control"  name="contact" value="{{doctor.contact}}"><br><br>
+         </div>
+
+             <div class="col-sm-6 mb-3">
+                <label>Specialization:</label>
+                <input type="text" class="form-control" name="specialization" value="{{doctor.specialization}}"><br><br>
+          </div>
+
+            <div class="col-sm-6 mb-3">
+                <label>HospitalContact:</label>
+                <input type="text" class="form-control" name="hospitalcontact" value="{{doctor.hospitalcontact}}"><br><br>
+          </div>
+            <div class="col-sm-6 mb-3">
+                <label> HospitalAddress:</label>
+                <input type="text" class="form-control" name="hospitaladdress" value="{{doctor.hospitaladdress}}"><br><br>
+           </div>
+      <div class="col-sm-6 mb-3">
+         <label>HospitalTiming:</label>
+            <input type="text"  class="form-control"  name="hospitaltiming" value="{{doctor.hospitaltiming}}"><br><br>
+     </div>
+       <div class="col-sm-8 mb-3">
+        <input class="btn btn-primary" type="submit">
+      </div>
+        </div>
+    </form>
+
+ </div>
+
+{% elif page== 2 %}
+<div class="container">
+<h2>Doctor Details</h2>
+    <table class="table table-hover ">
+        <thead>
+            <th>DoctorId</th>
+            <th>DoctorName</th>
+            <th>Contact</th>
+            <th>Specialization</th>
+            <th>HospitalContact</th>
+            <th>HospitalAddress</th>
+            <th>HospitalTiming</th>
+            <th>Action</th>
+        </thead>
+        {% for doctor in drlist %}
+            <tbody>
+            <td>{{doctor.drid}}</td>
+            <td>{{doctor.name}}</td>
+            <td>{{doctor.contact}}</td>
+            <td>{{doctor.specialization}}</td>
+             <td>{{doctor.hospitalcontact}}</td>
+            <td>{{doctor.hospitaladdress}}</td>
+            <td>{{doctor.hospitaltiming}}</td>
+            <td>
+               <a href="http://localhost:5000/doctor/edit/{{doctor.drid}}">EDIT</a>
+                <a href="http://localhost:5000/doctor/delete/{{doctor.drid}}">Delete</a>
+            </td>
+
+
+            </tbody>
+        {% endfor %}
+    </table>
+{% endif  %}
+<a href="http://localhost:5000/">Logout</a>
+
+    {% endblock %}
+</div>
+</body>
+</html>
