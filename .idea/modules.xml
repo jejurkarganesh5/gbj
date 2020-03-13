@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../GBJ_All_SCP/flask_doctor/.idea/flask_doctor.iml" filepath="$PROJECT_DIR$/../GBJ_All_SCP/flask_doctor/.idea/flask_doctor.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/gbj.iml" filepath="$PROJECT_DIR$/.idea/gbj.iml" />
     </modules>
   </component>
